@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="testQry">
+
+    <select id="selTestTime" resultType="camel">
+        /* testQry.selTestTime*/
+        WITH VAL AS (
+            SELECT	#{para1} P_DATA1,
+                      #{para2} P_DATA2,
+                      #{para3} P_DATA3
+            FROM	DUAL
+        )
+        SELECT	TO_CHAR(SYSDATE, 'YYYY/MM/DD HH24:MI:SS')	COLUMN1,
+                  VAL.P_DATA1||VAL.P_DATA2||VAL.P_DATA3		COLUMN2
+        FROM	DUAL,
+                VAL
+    </select>
+
+</mapper>
